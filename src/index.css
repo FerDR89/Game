@@ -1,5 +1,6 @@
 :root {
   --title-color: #009048;
+  --title-letter-color: #91ccaf;
   --btn-bg: #006cfc;
   --btn-border: #001997;
   --btn-fontColor: #d8fcfc;
@@ -13,4 +14,9 @@ body {
   margin: 0;
   font-family: "Odibee Sans", cursive;
   background-image: url("/src/assets/wallpaper.svg");
+}
+
+.root {
+  max-width: 375px;
+  height: 100vh;
 }

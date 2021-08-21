@@ -36,12 +36,12 @@ class HandsComp extends HTMLElement {
     const style = document.createElement("style");
     style.innerHTML = `
     .root{
-        width:${width};
-        height:${height};
+      width:${width};
+      height:${height};
     }
     .stone,.paper,.scissors{
       width:100%;
-      height:100%;
+      height:${height};
     }    
     `;
     this.shadow.appendChild(style);

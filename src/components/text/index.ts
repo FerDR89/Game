@@ -47,7 +47,7 @@ class CustomText extends HTMLElement {
       .text-bold{
         font-size:${this.fontSize};
         font-weight:600;
-        line-height: 40px;
+        line-height: 50px;
     }
       .body{
         font-size:${this.fontSize};
