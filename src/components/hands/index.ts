@@ -40,8 +40,8 @@ class HandsComp extends HTMLElement {
       height:${height};
     }
     .stone,.paper,.scissors{
-      width:100%;
-      height:${height};
+      width:${width};
+      height:${height}; 
     }    
     `;
     this.shadow.appendChild(style);

@@ -1,4 +1,3 @@
-import { state } from "../../state";
 export function initWelcomePage(params) {
   const welcomePage = document.createElement("section");
   welcomePage.className = "welcome";
@@ -31,9 +30,6 @@ export function initWelcomePage(params) {
   .welcome__container-title{
     width:284px;
     height:225px;
-  }
-  .welcome__letter-color-variant{
-    color:var(--title-letter-color);
   }
   .welcome__container-btn{
     width:322px;
