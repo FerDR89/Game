@@ -6,7 +6,7 @@ import { initRouter } from "../src/router";
 import { state } from "../src/state";
 
 (function main() {
-  state.init();
+  // state.init();
   const rootEl = document.querySelector(".root");
   initRouter(rootEl);
 })();

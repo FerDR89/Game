@@ -86,6 +86,7 @@ export function initGamePage(params) {
           goToResults();
         }, 3500);
       });
+      state.resetMyPlay();
     }
   })();
 

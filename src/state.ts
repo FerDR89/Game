@@ -6,7 +6,6 @@ const state = {
       computerGame: "",
     },
     history: [{}],
-    listeners: [],
   },
 
   init() {
@@ -20,10 +19,7 @@ const state = {
 
   setState(newState) {
     this.data = newState;
-    for (const callback of this.listeners) {
-      callback(newState);
-    }
-    localStorage.setItem("saved-state", JSON.stringify(newState));
+    this.pushToHistory();
   },
 
   subscribe(callback: (any) => any) {
@@ -33,16 +29,47 @@ const state = {
   setUserMove(move: Jugada) {
     const currentState = this.getState();
     currentState.currentGame.myPlay = move;
+    console.log("User move", currentState);
     this.setState(currentState);
   },
 
   setComputerMove(move: Jugada) {
     const currentState = this.getState();
     currentState.currentGame.computerGame = move;
+    console.log("Computer move", currentState);
     this.setState(currentState);
   },
 
-  whoWins() {},
+  whoWins(myPlay: Jugada, computerGame: Jugada) {
+    const iWontStone = myPlay == "stone" && computerGame == "scissors";
+    const iWontPaper = myPlay == "paper" && computerGame == "stone";
+    const iWontScissors = myPlay == "scissors" && computerGame == "paper";
+    const iWont = [iWontPaper, iWontStone, iWontScissors].includes(true);
+
+    const iLostStone = myPlay == "paper" && computerGame == "stone";
+    const iLostPaper = myPlay == "scissors" && computerGame == "paper";
+    const iLostScissors = myPlay == "stone" && computerGame == "scissors";
+    const iLost = [iLostPaper, iLostScissors, iLostStone].includes(true);
+
+    if (iWont) {
+      return "win";
+    } else if (iLost) {
+      return "lose";
+    } else {
+      return "tie";
+    }
+  },
+
+  pushToHistory() {
+    const currentState = this.getState();
+    currentState.history.push(currentState.currentGame);
+    localStorage.setItem("saved-state", JSON.stringify(currentState.history));
+  },
+
+  resetMyPlay() {
+    const currentState = this.getState();
+    currentState.currentGame.myPlay = "";
+  },
 };
 
 export { state };
