@@ -76,10 +76,10 @@ export function initGamePage(params) {
     const handsEls = gamePage.querySelectorAll("hands-el");
     for (const hand of handsEls) {
       hand.addEventListener("change", (e: any) => {
+        computerMove();
         state.setUserMove(e.detail.myPlay);
         hand.classList.add("move");
         setTimeout(() => {
-          computerMove();
           containerHands.innerHTML = `
           <hands-el class="animation" tag="${e.detail.myPlay}" width="90px" height="200px"></hands-el>
           `;
@@ -97,21 +97,27 @@ export function initGamePage(params) {
     );
     if (computerMove == 0) {
       state.setComputerMove("scissors");
-      computerContainer.innerHTML = `
-          <hands-el class="computer-hand" tag="scissors" width="90px" height="200px"></hands-el>
-          `;
+      setTimeout(() => {
+        computerContainer.innerHTML = `
+        <hands-el class="computer-hand" tag="scissors" width="90px" height="200px"></hands-el>
+        `;
+      }, 3500);
     }
     if (computerMove == 1) {
       state.setComputerMove("stone");
-      computerContainer.innerHTML = `
+      setTimeout(() => {
+        computerContainer.innerHTML = `
           <hands-el class="computer-hand" tag="stone" width="90px" height="200px"></hands-el>
           `;
+      }, 3500);
     }
     if (computerMove == 2) {
       state.setComputerMove("paper");
-      computerContainer.innerHTML = `
+      setTimeout(() => {
+        computerContainer.innerHTML = `
           <hands-el class="computer-hand" tag="paper" width="90px" height="200px"></hands-el>
           `;
+      }, 3500);
     }
   }
 
