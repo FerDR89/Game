@@ -4,7 +4,7 @@ import { initGamePage } from "../src/pages/game";
 
 const routes = [
   {
-    path: /\//,
+    path: /\/Game/,
     route: initWelcomePage,
   },
   {

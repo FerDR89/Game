@@ -5,9 +5,20 @@ const state = {
       myPlay: "",
       computerGame: "",
     },
-    history: [{}],
+    history: [],
   },
   listeners: [],
+
+  getData() {
+    const localData = localStorage.getItem("save-move");
+    const localDataParse = JSON.parse(localData);
+    if (localDataParse == null) {
+      const currentState = this.getState();
+      this.setState(currentState);
+    } else {
+      this.setState(localDataParse);
+    }
+  },
 
   getState() {
     return this.data;
@@ -18,6 +29,7 @@ const state = {
     for (const callback of this.listeners) {
       callback(newState);
     }
+    localStorage.setItem("save-move", JSON.stringify(newState));
   },
 
   suscribe(callback: (any) => any) {
@@ -26,13 +38,11 @@ const state = {
 
   setComputerMove(move: Jugada) {
     const currentState = this.getState();
-    console.log(currentState);
     currentState.currentGame.computerGame = move;
   },
 
   setUserMove(move: Jugada) {
     const currentState = this.getState();
-    console.log(currentState);
     currentState.currentGame.myPlay = move;
     this.pushToHistory(currentState);
   },
@@ -58,9 +68,13 @@ const state = {
   },
 
   pushToHistory(currentState) {
-    currentState.history.push(currentState.currentGame);
-    localStorage.setItem("saved-state", JSON.stringify(currentState));
-    console.log(currentState.history);
+    const myPlay = currentState.currentGame.myPlay;
+    const computerGame = currentState.currentGame.computerGame;
+    currentState.history.push({
+      myPlay: myPlay,
+      computerGame: computerGame,
+    });
+    this.setState(currentState);
   },
 
   resetMyPlay() {
