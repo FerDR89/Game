@@ -43,6 +43,7 @@ class CustomText extends HTMLElement {
         font-weight:700;
         line-height: 71px;
         color:var(--title-color);
+        text-align:center;
     }
       .text-bold{
         font-size:${this.fontSize};
@@ -51,7 +52,6 @@ class CustomText extends HTMLElement {
     }
       .body{
         font-size:${this.fontSize};
-        line-height: 26px;
     }
       .title, .text-bold, .body{
         margin:0;

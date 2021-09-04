@@ -24,6 +24,23 @@ const state = {
     return this.data;
   },
 
+  getScore() {
+    const currentState = state.getState().history;
+    let counterWin = 0;
+    let counterLose = 0;
+    currentState.forEach((e) => {
+      const result = state.whoWins(e.myPlay, e.computerGame);
+      if (result == "Ganaste") {
+        counterWin += 1;
+      }
+      if (result == "Perdiste") {
+        counterLose += 1;
+      }
+    });
+    const score = { counterWin, counterLose };
+    return score;
+  },
+
   setState(newState) {
     this.data = newState;
     for (const callback of this.listeners) {
@@ -52,18 +69,17 @@ const state = {
     const iWontPaper = myPlay == "paper" && computerGame == "stone";
     const iWontScissors = myPlay == "scissors" && computerGame == "paper";
     const iWont = [iWontPaper, iWontStone, iWontScissors].includes(true);
-
-    const iLostStone = myPlay == "paper" && computerGame == "stone";
-    const iLostPaper = myPlay == "scissors" && computerGame == "paper";
-    const iLostScissors = myPlay == "stone" && computerGame == "scissors";
+    const iLostStone = myPlay == "paper" && computerGame == "scissors";
+    const iLostPaper = myPlay == "scissors" && computerGame == "stone";
+    const iLostScissors = myPlay == "stone" && computerGame == "paper";
     const iLost = [iLostPaper, iLostScissors, iLostStone].includes(true);
 
-    if (iWont) {
-      return "win";
-    } else if (iLost) {
-      return "lose";
+    if (iWont == true) {
+      return "Ganaste";
+    } else if (iLost == true) {
+      return "Perdiste";
     } else {
-      return "tie";
+      return "Empate";
     }
   },
 

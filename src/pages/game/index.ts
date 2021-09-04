@@ -123,7 +123,7 @@ export function initGamePage(params) {
 
   function goToResults() {
     setTimeout(() => {
-      params.goTo("/welcome");
+      params.goTo("/results");
     }, 1500);
   }
 
