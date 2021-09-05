@@ -23,15 +23,15 @@ export function initRulesPage(params) {
   .rules__container{
     width:100%;
     height:100vh;
-    padding:130px 26px 0px 26px;
+    padding:120px 26px 0px 26px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:space-between;
-}
-  .rules__container-title{
+  }
+  .rules__container-text{
     width:284px;
-    height:225px;
+    height:250px;
   }
   .rules__letter-color-variant{
     color:var(--title-letter-color);

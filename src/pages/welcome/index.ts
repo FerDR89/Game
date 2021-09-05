@@ -21,16 +21,24 @@ export function initWelcomePage(params) {
   .welcome__container{
     width:100%;
     height:100vh;
-    padding:115px 26px 0px 26px;
+    padding:100px 26px 0px 26px;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:space-between;
 }
-  .welcome__container-title{
-    width:284px;
-    height:225px;
-  }
+@media(min-width:376px){
+  .welcome__container{
+    width:100%;
+    height:100vh;
+    padding:40px 26px 0px 26px;
+}}
+
+.welcome__container-title{
+  width:284px;
+  height:280px;
+}
+
   .welcome__container-btn{
     width:322px;
     height:87px;

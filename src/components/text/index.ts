@@ -41,7 +41,7 @@ class CustomText extends HTMLElement {
       .title{
         font-size:${this.fontSize};
         font-weight:700;
-        line-height: 71px;
+        line-height: 85px;
         color:var(--title-color);
         text-align:center;
     }
